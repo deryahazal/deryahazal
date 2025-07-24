@@ -64,10 +64,11 @@ I'm a research-oriented student passionate about the intersection of functional 
 ---
 
 📫 **Let’s Connect**  
-- LinkedIn: https://www.linkedin.com/in/deryahazalyildirim
-Kaggle:   https://www.kaggle.com/deryahazal
-Email: derya.yildirim@metu.edu.tr
+- LinkedIn: https://www.linkedin.com/in/deryahazalyildirim 
+- Kaggle:   https://www.kaggle.com/deryahazal  
+- Email:    derya.yildirim@metu.edu.tr
 
+---
 
- 💬 *"Seeing me isn't just about seeing my face. If you truly grasp and feel my ideas and my emotions, that's what truly matters. -Atatürk"*
+> 💬 *"Seeing me isn't just about seeing my face. If you truly grasp and feel my ideas and my emotions, that's what truly matters. -Atatürk"*
 
