@@ -1,6 +1,4 @@
-# deryahazal
-
-# 👋 Hi there! I'm Derya Hazal Yıldırım
+# Hi there! I'm Derya Hazal Yıldırım
 
 🎓 **Double Major Student** – Chemistry & Chemical Engineering  
 🧠 **Researcher & Aspiring Entrepreneur** – Materials Science × Artificial Intelligence  
@@ -8,7 +6,7 @@
 
 ---
 
-## 💡 About Me
+## About Me
 
 I'm a research-oriented student passionate about the intersection of functional materials and artificial intelligence. My work focuses on developing novel materials for energy storage and optoelectronic applications, while also exploring ML-assisted research automation tools for next-generation "self-driving labs."
 
@@ -16,7 +14,7 @@ I'm a research-oriented student passionate about the intersection of functional 
 
 ---
 
-## 🔬 Research Interests
+## Research Interests
 
 - 🧪 **Functional Polymers** – for electrochromic and energy storage devices  
 - ☀️ **Quantum Dots** – MEG-enabled photovoltaics for high-efficiency solar cells  
@@ -26,7 +24,7 @@ I'm a research-oriented student passionate about the intersection of functional 
 
 ---
 
-## 🛠️ Technical Skills
+## Technical Skills
 
 - **Programming & Tools:** Python · SQL · MATLAB · SCAPS · COMSOL · ASPEN  
 - **Lab Expertise:** Electrochemical polymerization · Quantum dot synthesis · Spectroscopy  
@@ -35,7 +33,7 @@ I'm a research-oriented student passionate about the intersection of functional 
 
 ---
 
-## 📊 Featured GitHub Projects
+## Featured GitHub Projects
 
 | 📁 Project | 🔍 Description |
 |------------|----------------|
@@ -46,7 +44,7 @@ I'm a research-oriented student passionate about the intersection of functional 
 
 ---
 
-## 🌍 Areas of Passion
+## Areas of Passion
 
 - Scientific entrepreneurship and technology translation  
 - Sustainable energy systems and smart materials  
@@ -56,14 +54,14 @@ I'm a research-oriented student passionate about the intersection of functional 
 
 ---
 
-## 🤿 Fun Facts About Me
+## Fun Facts About Me
 
 - 🇹🇷 National-level underwater rugby and hockey athlete  
 - 👥 Former volunteer tour guide across Europe  
 
 ---
 
-📫 **Let’s Connect**  
+ **Let’s Connect**  
 - LinkedIn: https://www.linkedin.com/in/deryahazalyildirim 
 - Kaggle:   https://www.kaggle.com/deryahazal  
 - Email:    derya.yildirim@metu.edu.tr
