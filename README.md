@@ -8,9 +8,8 @@
 
 ## About Me
 
-I'm a research-oriented student passionate about the intersection of functional materials and artificial intelligence. My work focuses on developing novel materials for energy storage and optoelectronic applications, while also exploring ML-assisted research automation tools for next-generation "self-driving labs."
+I'm a research oriented student passionate about the intersection of functional materials and artificial intelligence. My work focuses on developing novel materials for energy storage and optoelectronic applications, while also exploring ML-assisted research automation tools for next-generation self-driving labs.
 
-🎯 My mission: To merge chemistry, AI, and entrepreneurship into impactful deep-tech solutions that shape the future of scientific discovery and sustainability.
 
 ---
 
@@ -68,5 +67,6 @@ I'm a research-oriented student passionate about the intersection of functional 
 
 ---
 
-> 💬 *"Seeing me isn't just about seeing my face. If you truly grasp and feel my ideas and my emotions, that's what truly matters."  -Atatürk*
+> *"Seeing me isn't just about seeing my face. If you truly grasp and feel my ideas and my emotions, that's what truly matters."  
+-Atatürk*
 
