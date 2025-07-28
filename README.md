@@ -1,7 +1,7 @@
 # Hi there! I'm Derya Hazal Yıldırım
 
 🎓 **Double Major Student** – Chemistry & Chemical Engineering  
-🧠 **Researcher & Aspiring Entrepreneur** – Materials Science × Artificial Intelligence  
+🧠 **Researcher** – Materials Science × Artificial Intelligence  
 📍 Ankara, Turkey | ✉️ derya.yildirim@metu.edu.tr  
 
 ---
@@ -56,8 +56,8 @@ I'm a research-oriented student passionate about the intersection of functional 
 
 ## Fun Facts About Me
 
-- 🇹🇷 National-level underwater rugby and hockey athlete  
-- 👥 Former volunteer tour guide across Europe  
+- National-level underwater rugby and hockey athlete  
+- Former volunteer tour guide across Europe  
 
 ---
 
@@ -68,5 +68,5 @@ I'm a research-oriented student passionate about the intersection of functional 
 
 ---
 
-> 💬 *"Seeing me isn't just about seeing my face. If you truly grasp and feel my ideas and my emotions, that's what truly matters." -Atatürk*
+> 💬 *"Seeing me isn't just about seeing my face. If you truly grasp and feel my ideas and my emotions, that's what truly matters."  -Atatürk*
 
