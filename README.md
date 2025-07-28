@@ -62,7 +62,7 @@ I'm a research-oriented student passionate about the intersection of functional 
 ---
 
  **Let’s Connect**  
-- LinkedIn: https://www.linkedin.com/in/deryahazalyildirim 
+- LinkedIn: https://www.linkedin.com/in/derya-hazal-yildirim 
 - Kaggle:   https://www.kaggle.com/deryahazal  
 - Email:    derya.yildirim@metu.edu.tr
 
