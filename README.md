@@ -35,7 +35,7 @@ I'm a research-oriented student passionate about the intersection of functional 
 
 ## Featured GitHub Projects
 
-| 📁 Project | 🔍 Description |
+| Project | Description |
 |------------|----------------|
 | `reaction-time-predictor` | ML model predicting reaction duration from electrochemical data |
 | `titanic-analysis` | Intro to machine learning using classic Kaggle dataset |
@@ -68,5 +68,5 @@ I'm a research-oriented student passionate about the intersection of functional 
 
 ---
 
-> 💬 *"Seeing me isn't just about seeing my face. If you truly grasp and feel my ideas and my emotions, that's what truly matters. -Atatürk"*
+> 💬 *"Seeing me isn't just about seeing my face. If you truly grasp and feel my ideas and my emotions, that's what truly matters." -Atatürk*
 
