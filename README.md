@@ -1,7 +1,8 @@
 # Hi there! I'm Derya Hazal Yıldırım
 
-🎓 **Double Major Student** – Chemistry & Chemical Engineering  
-🧠 **Researcher** – Materials Science × Artificial Intelligence  
+🎓 M.Sc. Student in Chemistry 
+⚒️ Double Major Student – Chemistry & Chemical Engineering
+🧠 Researcher – Materials Science × Artificial Intelligence  
 📍 Ankara, Turkey | ✉️ derya.yildirim@metu.edu.tr  
 
 ---
@@ -27,7 +28,7 @@ I'm a research oriented student passionate about the intersection of functional 
 
 - **Programming & Tools:** Python · SQL · MATLAB · SCAPS · COMSOL · ASPEN  
 - **Lab Expertise:** Electrochemical polymerization · Quantum dot synthesis · Spectroscopy  
-- **Software:** OriginPro · ChemDraw · Siemens NX · 3DEXPERIENCE  
+- **Software:** Origin · ChemDraw · Siemens NX · 3DEXPERIENCE  
 - **Certificates:** Google Project Management · IBM Data Analysis · DeepLearning.AI Machine Learning
 
 ---
