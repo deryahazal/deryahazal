@@ -1,8 +1,11 @@
 # Hi there! I'm Derya Hazal Yıldırım
 
-🎓 M.Sc. Student in Chemistry 
+🎓 M.Sc. Student in Chemistry
+
 ⚒️ Double Major Student – Chemistry & Chemical Engineering
+
 🧠 Researcher – Materials Science × Artificial Intelligence  
+
 📍 Ankara, Turkey | ✉️ derya.yildirim@metu.edu.tr  
 
 ---
