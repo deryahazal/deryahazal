@@ -6,7 +6,7 @@
 
 🧠 Researcher – Materials Science × Artificial Intelligence  
 
-📍 Ankara, Turkey | ✉️ derya.yildirim@metu.edu.tr  
+📍 Ankara, Turkey | ✉️ yildirimderyahazal@gmail.com  
 
 ---
 
