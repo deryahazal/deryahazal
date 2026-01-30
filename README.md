@@ -73,4 +73,3 @@ I'm a research oriented student passionate about the intersection of functional 
 
 > *"Seeing me isn't just about seeing my face. If you truly grasp and feel my ideas and my emotions, that's what truly matters."  
 -Atatürk*
-
