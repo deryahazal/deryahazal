@@ -1,0 +1,232 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import glob
+import os
+import sys
+from scipy.signal import find_peaks, savgol_filter
+from scipy.stats import linregress
+
+CONFIG = {
+    'PH': 14.0,                  # Elektrolit pH
+    'E_REF': 0.197,              # Ag/AgCl Referans (V)
+    'AREA': 1.0,                 # Elektrot Alanı (cm2)
+    'CS_REF': 0.040,             # ECSA Ref. Kapasitans (mF/cm2)
+    'HER_THRESHOLD': -0.5,       # HER Onset Akım Eşiği (mA/cm2)
+    'SMOOTH_WINDOW': 11,         # Filtre Penceresi
+    'USE_RHE': True              # True: RHE Eksen, False: Ham Eksen
+}
+
+plt.rcParams.update({
+    'font.family': 'sans-serif', 'font.size': 10,
+    'axes.linewidth': 1.5, 'axes.grid': True, 'grid.alpha': 0.3,
+    'figure.dpi': 300, 'figure.figsize': (8, 6)
+})
+
+class ElectroFinal:
+    def __init__(self):
+        self.db_results = []
+
+    def atomic_loader(self, filepath):
+        """Dosyayı satır satır okur, hatasız yükler."""
+        meta = {'scan_rate': 100.0, 'cycles': 1}
+        data_rows = []
+        header_found = False
+        
+        try:
+            with open(filepath, 'r', encoding='latin1') as f:
+                lines = f.readlines()
+
+            for line in lines:
+                if 'SCANRATE' in line and 'QUANT' in line:
+                    parts = line.split('\t')
+                    if len(parts) > 2: meta['scan_rate'] = float(parts[2].replace(',', '.'))
+                
+                if 'CYCLES' in line and 'IQUANT' in line:
+                    parts = line.split('\t')
+                    if len(parts) > 2: meta['cycles'] = int(parts[2])
+
+                if 'Vf' in line and 'Im' in line:
+                    header_found = True
+                    continue
+
+                if header_found:
+                    parts = line.strip().split('\t')
+                    if len(parts) >= 4:
+                        clean_row = [p.replace(',', '.') for p in parts]
+                        try:
+                            float(clean_row[2]) # Vf sayı mı?
+                            data_rows.append(clean_row)
+                        except: continue
+
+            if not data_rows: return None, "Veri Yok"
+
+            cols = ['Pt', 'T', 'Vf', 'Im', 'Vu', 'Sig', 'Ach', 'IERange', 'Over', 'St']
+            current_cols = cols[:len(data_rows[0])]
+            
+            df = pd.DataFrame(data_rows, columns=current_cols)
+            for c in df.columns: df[c] = pd.to_numeric(df[c], errors='coerce')
+            
+            df = df.dropna(subset=['Vf', 'Im'])
+            if df.empty: return None, "Sayısal Veri Yok"
+
+            df['j'] = (df['Im'] * 1000) / CONFIG['AREA']
+            
+            if CONFIG['USE_RHE']:
+                df['E'] = df['Vf'] + CONFIG['E_REF'] + (0.059 * CONFIG['PH'])
+                meta['xlabel'] = 'Potential (V vs RHE)'
+            else:
+                df['E'] = df['Vf']
+                meta['xlabel'] = 'Potential (V vs Ref)'
+
+
+            try:
+                if len(df) > CONFIG['SMOOTH_WINDOW']:
+                    df['j_smooth'] = savgol_filter(df['j'], CONFIG['SMOOTH_WINDOW'], 3)
+                else: df['j_smooth'] = df['j']
+            except: df['j_smooth'] = df['j']
+
+            return df, meta
+
+        except Exception as e:
+            return None, str(e)
+
+    def analyze_capacitive(self, df, meta, name):
+        if df.empty: return None, {}
+        
+        cyc = max(1, meta.get('cycles', 1))
+
+        pts = len(df) // cyc if len(df) > cyc else len(df)
+        if pts == 0: pts = len(df) 
+        
+        df_last = df.tail(pts).copy()
+        
+        E = df_last['E'].values
+        j = df_last['j_smooth'].values
+        T = df_last['T'].values
+        
+        if len(E) == 0: return df_last, {}
+
+        res = {'Dosya': name}
+        
+        if len(T) > 1:
+            res['Q_mC'] = np.trapezoid(np.abs(j), x=T) / 2
+        else: res['Q_mC'] = 0
+        
+        # ECSA
+        sr = meta['scan_rate'] / 1000.0 if meta['scan_rate'] else 0.1
+        V_range = E.max() - E.min()
+        if V_range > 0.01:
+            res['C_dl'] = np.trapezoid(np.abs(j), x=E) / (2 * sr * V_range)
+            res['ECSA'] = res['C_dl'] / CONFIG['CS_REF']
+        else:
+            res['C_dl'] = res['ECSA'] = 0
+
+        fig, ax = plt.subplots()
+        ax.plot(E, j, color='#154360', lw=2)
+        ax.fill_between(E, j, 0, color='#154360', alpha=0.1)
+        ax.text(0.02, 0.98, f"Q: {res['Q_mC']:.2f} mC\nECSA: {res['ECSA']:.1f} cm²", 
+                transform=ax.transAxes, va='top', bbox=dict(fc='white', alpha=0.9))
+        ax.set_xlabel(meta['xlabel']); ax.set_ylabel('j (mA/cm²)')
+        ax.set_title(f"Capacitive: {name}")
+        plt.tight_layout(); plt.savefig(f"1_Cap_{name}.png"); plt.close()
+        
+        return df_last, res
+
+    def analyze_redox(self, df, meta, name, res):
+        E, j = df['E'].values, df['j_smooth'].values
+        if len(E) == 0: return
+
+        prom = (j.max() - j.min()) * 0.05
+        ox, _ = find_peaks(j, prominence=prom)
+        red, _ = find_peaks(-j, prominence=prom)
+        
+        if len(ox) == 0 and len(red) == 0: return
+
+        fig, ax = plt.subplots()
+        ax.plot(E, j, 'k-', lw=1.5, alpha=0.7)
+        
+        if len(ox) > 0:
+            idx = ox[np.argmax(j[ox])]
+            res['E_ox'] = E[idx]; res['I_ox'] = j[idx]
+            ax.plot(E[idx], j[idx], 'r*', ms=10)
+        
+        if len(red) > 0:
+            idx = red[np.argmax(-j[red])]
+            res['E_red'] = E[idx]; res['I_red'] = j[idx]
+            ax.plot(E[idx], j[idx], 'b*', ms=10)
+
+        if res.get('E_ox') and res.get('E_red'):
+            res['Delta_E'] = abs(res['E_ox'] - res['E_red']) * 1000
+
+        ax.set_xlabel(meta['xlabel']); ax.set_ylabel('j (mA/cm²)')
+        ax.set_title(f"Redox: {name}")
+        plt.tight_layout(); plt.savefig(f"2_Redox_{name}.png"); plt.close()
+
+    def analyze_her(self, df, meta, name, res):
+        """HER Analizi"""
+        her_zone = df[df['j_smooth'] < CONFIG['HER_THRESHOLD']]
+        if len(her_zone) < 10: return
+
+        res['HER_Onset'] = her_zone['E'].max()
+        
+        tafel_data = her_zone[(her_zone['j_smooth'] < -1) & (her_zone['j_smooth'] > -10)]
+        if len(tafel_data) > 5:
+            x = np.log10(np.abs(tafel_data['j_smooth']))
+            y = tafel_data['E']
+            slope, _, _, _, _ = linregress(x, y)
+            res['Tafel_Slope'] = slope * 1000
+            
+            fig, ax = plt.subplots()
+            ax.plot(df['E'], df['j_smooth'], 'gray', alpha=0.3)
+            ax.plot(her_zone['E'], her_zone['j_smooth'], 'r-', lw=2)
+            ax.text(0.05, 0.1, f"Tafel: {abs(slope)*1000:.0f} mV/dec", transform=ax.transAxes)
+            ax.set_xlabel(meta['xlabel']); ax.set_ylabel('j (mA/cm²)')
+            ax.set_title(f"HER: {name}")
+            plt.tight_layout(); plt.savefig(f"3_HER_{name}.png"); plt.close()
+
+    def run(self):
+        files = glob.glob("*.DTA")
+        print(f"--- FİNAL ANALİZ ({len(files)} Dosya) ---\n")
+        
+        for f in files:
+            name = os.path.basename(f).replace('.DTA', '')
+            print(f"» {name}...", end=" ")
+            
+            df, meta = self.atomic_loader(f)
+            if df is not None:
+                try:
+                    df_last, res = self.analyze_capacitive(df, meta, name)
+                    if df_last is not None:
+                        self.analyze_redox(df_last, meta, name, res)
+                        self.analyze_her(df_last, meta, name, res)
+                        self.db_results.append(res)
+                        print("TAMAM.")
+                except Exception as e:
+                    print(f"HATA: {e}")
+            else:
+                print("OKUNAMADI")
+
+        if self.db_results:
+            df_final = pd.DataFrame(self.db_results)
+            
+            try:
+                with pd.ExcelWriter('Sonuc_Raporu.xlsx') as writer:
+                    df_final.to_excel(writer, sheet_name='SONUCLAR', index=False)
+                    pd.DataFrame([
+                        ['Q (Yük)', 'Integral |j| / 2'],
+                        ['ECSA', 'C_dl / 0.040'],
+                        ['Tafel', 'dE / dlog(j)']
+                    ], columns=['Parametre', 'Formül']).to_excel(writer, sheet_name='FORMULLER', index=False)
+                print("\n✔ Sonuc_Raporu.xlsx oluşturuldu.")
+            
+            except Exception as e:
+                print(f"\n[!] Excel kütüphanesi eksik ({e}). CSV oluşturuluyor...")
+                df_final.to_csv("Sonuc_Raporu.csv", sep=';', decimal=',', index=False)
+                print("✔ Sonuc_Raporu.csv oluşturuldu (Excel ile açılabilir).")
+        else:
+            print("\nVeri yok.")
+
+if __name__ == "__main__":
+    app = ElectroFinal()
+    app.run()
