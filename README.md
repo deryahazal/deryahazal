@@ -1,8 +1,7 @@
 # Derya Hazal Yıldırım
 
 M.Sc. Candidate in Chemistry · Double Major in Chemical Engineering  
-METU, Ankara 
-yildirimderyahazal@gmail.com
+METU, Ankara · yildirimderyahazal@gmail.com
 
 ---
 
