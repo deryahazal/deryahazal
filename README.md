@@ -1,62 +1,22 @@
 # Derya Hazal Yıldırım
 
-**M.Sc. Candidate in Chemistry (Micro/Nanotechnology) · Double Major in Chemical Engineering**  
-Middle East Technical University (METU), Ankara, Turkey
+M.Sc. Candidate in Chemistry · Double Major in Chemical Engineering  
+METU, Ankara — [LinkedIn](https://www.linkedin.com/in/derya-hazal-yildirim) · [Kaggle](https://www.kaggle.com/deryahazal) · yildirimderyahazal@gmail.com
 
 ---
 
-My research sits at the intersection of **electrochemistry**, **functional materials**, and **data-driven experimentation**. My M.Sc. thesis proposes an open-source Self-Driving Lab (SDL) framework for electrochromic energy storage — combining Bayesian optimization, active learning, and automated literature mining to move beyond conventional trial-and-error workflows.
+I'm a materials chemistry student with a growing interest in the intersection of electrochemistry and machine learning. My current work explores whether Self-Driving Lab frameworks can make electrochromic energy storage research faster and more systematic — still early days, but a direction I'm committed to.
 
-I spent time at the **Federal Institute for Materials Research and Testing (BAM)** in Berlin, where I worked on API-driven closed-loop electrodeposition pipelines under real laboratory conditions. Prior to that, I studied quantum dot photovoltaics (PbSe MEG devices, IQE > 100%) and FRET-based nano dyads at METU and TÜBİTAK.
-
----
-
-## Research Interests
-
-- Self-Driving Labs & Material Acceleration Platforms (MAPs)
-- Electrochromic devices and hybrid supercapacitors
-- Quantum dot photovoltaics and multiple exciton generation
-- Bayesian optimization and active learning for experimental design
-- Cheminformatics and automated text mining
+Previously worked on quantum dot photovoltaics at METU and had the opportunity to contribute to automated electrodeposition workflows at BAM Berlin.
 
 ---
 
-## Selected Projects
+**What I'm working with:**  
+Python · Bayesian Optimization · Active Learning · CV/EIS · UV-Vis/FTIR · COMSOL · Git
 
-| Repository | Description |
-|---|---|
-| `reaction-time-predictor` | ML model predicting electrochemical reaction duration from CV data |
-| `quantum-dot-fret` | Energy transfer efficiency analysis in donor–acceptor nanostructures |
-| `self-driving-lab-ideas` | Literature review and prototypes for ML-based lab automation |
-| `titanic-analysis` | Introductory machine learning — Kaggle classic |
+**What I'm building toward:**  
+Closed-loop experimental platforms where data and chemistry speak the same language.
 
 ---
 
-## Technical Stack
-
-**Electrochemistry:** CV · GCD · EIS · Chronoamperometry · Electrodeposition  
-**Characterization:** UV-Vis · FTIR · PL · Raman · AFM · SEM · TEM  
-**Programming:** Python (Pandas · NumPy · Scikit-learn · BoTorch · RDKit) · MATLAB · SQL · Git  
-**ML/AI:** Gaussian Process Regression · Bayesian Optimization · Active Learning  
-**Simulation:** COMSOL · Aspen · SCAPS  
-
----
-
-## Certifications
-
-- Google Project Management
-- IBM Data Analysis with Python
-- DeepLearning.AI Machine Learning Specialization
-
----
-
-## Connect
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/derya-hazal-yildirim)
-[![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=flat&logo=kaggle&logoColor=white)](https://www.kaggle.com/deryahazal)
-[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:yildirimderyahazal@gmail.com)
-
----
-
-*National underwater rugby and hockey athlete. Former volunteer tour guide across Europe.*
-
+*Also: national-level underwater rugby player and former volunteer tour guide across Europe.*
