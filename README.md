@@ -5,7 +5,7 @@ METU, Ankara · yildirimderyahazal@gmail.com
 
 ---
 
-I'm a materials chemistry student with a growing interest in the intersection of electrochemistry and machine learning. My current work explores whether Self-Driving Lab frameworks can make electrochromic energy storage research faster and more systematic — still early days, but a direction I'm committed to.
+I'm a materials chemistry student with a growing interest in the intersection of electrochemistry and machine learning. My current work explores whether self-driving Lab frameworks can make electrochromic energy storage research faster and more systematic.
 
 Previously worked on quantum dot photovoltaics and conducting polymers at METU and had the opportunity to contribute to automated electrodeposition workflows at BAM Berlin.
 
